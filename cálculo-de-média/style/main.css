@@ -1,0 +1,300 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: rgb(159, 176, 199);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    margin: 10rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo {
+    border-bottom: 2px solid black;
+}
+
+.descricao {
+    font-size: 1.2rem;
+    width: 30rem;
+    text-align: center;
+}
+
+.container-media__opcoes {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 10%;
+}
+
+.opcoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.spn-opcao {
+    border: 1px solid black;
+    margin: 3%;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.spn-opcao:hover, spn-opcao:active {
+    color: rgb(159, 176, 199);
+    background: rgb(40, 0, 20);
+}
+
+
+.div-calcMedia {
+    display: flex;
+    justify-content: center;
+    width: 350px;
+    height: 350px;
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+        /*O z-index indica que a pespectiva dele é mais perto da tela, ou seja, ele sobrepõe os demais elementos da tela*/
+    display: none;
+        /*Inicialmente, display=none. Será trocado quando o usuário escolher o método do cálculo da média. */ 
+       /*Overflow: scroll adiciona uma barra de rolagem caso os elementos saiam da div.*/
+}
+
+.div-calcMedia__specific {
+    overflow-y: scroll;
+}
+
+.close {
+    display: flex;
+    height: 45px;
+    width: 42px;
+    right: 0;
+    background-color:rgb(228, 218, 218);
+    position: absolute;
+    z-index: 1; 
+}
+
+.close:hover {
+    animation: closeAnima .5s ease both; 
+}
+
+@keyframes closeAnima {
+    100% {
+       background-color: rgb(206, 37, 37);
+    }
+}
+
+.close .trace {
+   display: flex;
+   width: 1px;
+   height: 30px; 
+   margin: 10px;
+   right: 10px;
+   background-color: black;
+   position: absolute;
+}
+
+.close .trace:nth-child(1) {
+    /*nth-child tem a capacidade de acessar especificamente um só elemento da mesma classe. Por exemplo, caso há uma classe em 10 elementos, podemos acessa-las particularmenter por essa propriedade.*/
+    transform: rotate(-40deg);
+}
+.close .trace:nth-child(2) {
+    transform: rotate(40deg);
+}
+
+
+
+/*Estilo das divs dos métodos da média: */
+/*1° div: média bimestral*/
+.div-calcMedia form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20%;
+      font-family: monospace;
+      font-size: 16px;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-wrapper {
+   width: 300px;
+   margin-left: 10%;
+}
+
+.input {
+    width: 150px;
+    margin: 5px;
+}
+
+.btn-calcMed {
+    padding: 10px 20px;
+    margin: auto;
+    background-color: rgb(238, 229, 229);
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-color: black;
+    position: relative;
+    overflow: hidden; 
+       /*Overflow precisa estar no elemento pai, para que seus 'filhos' não sobresaia dele. É o óbvio, parando para pensar, mas tive uma dúvida sobre isso.*/
+    z-index: 1;
+       /*A propriedade z-index precisa ser maior que a de seus pseudoelementos, para que os elementos dessa classe não fique 'embaixo' dos pseudoelementos.*/
+    transition: .8s;
+}
+
+/*animação do botao calcMed (acionado com o evento hover)*/
+.btn-calcMed::before, .btn-calcMed::after{
+    background-color: black;
+    position: absolute;
+    top: 50%; 
+       /*centralização dos círculos. */
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; /*arredondamento da div. */
+    z-index: -1;
+}
+.btn-calcMed::before {
+    left: -30px; 
+      /*Setando o left do before antes da div. Então, já que a div tem a prop 'overflow: hidden', os pseudoelementos desaparecem da tela.*/
+    transform: translate(-50%, -50%);
+      /*Ajuste do elemento com o translate. -50% porque queremos ele mais a esquerda*/
+     
+}
+.btn-calcMed::after {
+    right: -30px;
+       /*Setando o right do after depois da div. Então, já que a div tem a prop 'overflow: hidden', os pseudoelementos desaparecem da tela.*/
+    transform: translate(50%, -50%);
+}
+
+.btn-calcMed:hover {
+    color: white;
+}
+
+.btn-calcMed:hover::before {
+   animation: collision-before .8s both;
+   animation-direction: alternate;
+} 
+.btn-calcMed:hover::after{
+   animation: collision-after .8s both;
+   animation-direction: alternate;
+} 
+
+@keyframes collision-before {
+    0% {
+        left: -30px;
+    }
+    50% {
+        left: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        left: 50%;
+        width: 375px;
+        height: 375px;
+           /*'explosao' da colisão dos círculos. Isto é, ele cresce quando se encontram.*/
+    }
+}
+
+@keyframes collision-after {
+    0% {
+       right: -30px;
+    }
+    50% {
+        right: 50%;
+        width: 20px;
+        height: 20px;
+    }
+    100% {
+        right: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+
+.resultado {
+    display: none;
+    margin-top: 15px;
+}
+
+.btn-recalc {
+    display: none; 
+       /*o botão de recalcular só aparece quando o botão de calcular for clicado, ou seja, quando a média for exibida ao usuário.*/
+    width: 50px;
+    height: 50px;
+}
+
+/*Animação do botão recalc: */
+.btn-recalc:hover {
+    animation: btnRotation .8s ease forwards;
+}
+
+@keyframes btnRotation {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(240deg);
+    }
+}
+
+.wrapper-inputInfo {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-size: 22px;
+    width: 80%;
+}
+
+.input-info {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+p {
+    width: 80%;
+    opacity: 50%;
+}
+
+.form-wrapperParticular {
+    display: none;/*O valor muda qnd o usuário apertar o botao*/;
+}
+
+.iptParticular {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.iptParticular input {
+    width: 150px;
+}
+
+.iptParticular p {
+    width: 25%;
+}
+
+.wrapper-btn {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}

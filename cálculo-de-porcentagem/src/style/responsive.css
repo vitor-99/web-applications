@@ -1,0 +1,59 @@
+@media (max-width: 750px) {
+    .title {
+        font-size: 25px; 
+        width: 70%;       
+    }
+    .div-calc {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 430px) {
+    .turn-mode img {
+        width: 50px;
+        height: 50px;
+        margin-top: 5%;
+    }
+}
+
+@media (max-width: 370px) {
+    .div-escolheMet {
+        width: 250px;
+        font-size: 15px;
+    }
+    .met-types {
+        width: 250px;
+        font-size: 15px;
+    }
+    #btn-calc {
+        padding: 5px 5px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 280px) {
+    .div-escolheMet {
+        width: 200px;
+        font-size: 15px;
+    }
+    .met-types {
+        width: 200px;
+        font-size: 15px;
+    }
+    .title {
+        margin-top: 25%;
+    }
+}
+
+/*responsividade para a altura:*/
+@media (max-height: 700px) {
+    .footer {
+        height: 70px;
+    }
+}
+
+@media (max-height: 500px) {
+    .footer {
+        display: none;
+    }
+}

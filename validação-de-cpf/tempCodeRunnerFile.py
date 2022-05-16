@@ -1,0 +1,1 @@
+#__name__ é uma variável interna. Ou seja, é um variável pré-estabelecidadas do python.

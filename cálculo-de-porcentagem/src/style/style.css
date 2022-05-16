@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    /* font-size: 100%;
+    font: inherit; */
+    vertical-align: baseline;
+      /*vertical-alignespecifica o alinhamento vertical de um inline ou caixa table-cell.*/      
+      /*baseline alinha a base da linha do elemento de acordo com o seu pai.*/
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.background { 
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    z-index: -2;
+}
+
+.background-helper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #9feff8e7;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.turn-mode img {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+
+.container-inicial {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 5%;
+}
+
+.title {
+   margin: 10px;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #000777;
+   font-size: 30px;
+   text-align: center;
+}
+
+.descricao {
+    width: 70%;
+    font-size: 23px;
+    color: #3b2496;
+    text-align: center;
+    margin: 30px;
+    text-decoration: underline;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.div-escolheMet {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid black;
+   padding: 2px 2px;
+   border-radius: 5px;
+   background-color: #046074;
+   color: rgb(255, 255, 255);
+   font-size: 22px;
+   font-weight: bold;
+   text-align: center;   
+}
+
+.div-trace {
+    display: flex;
+    width: 26px;
+    height: 32px;
+    margin: 0 16px;
+    padding: 8px 4px;
+    background-color: transparent;
+    position: relative;
+      /*Quando o trace receber posição absolute, ele não sairá do elemento pai devido à essa propriedade.*/
+}
+
+.div-trace:hover {
+    background-color: rgba(151, 143, 143, 0.405);
+      /*efeito de background aos traçados.*/
+}
+
+.trace {
+    display: block;
+    width: 2px;
+    height: 12px;
+    background-color: black;
+    margin: auto; 
+      /*margin: auto alinha os elementos dentro da div pai automaticamente.*/
+}
+
+.trace:nth-child(1) {
+    transform: rotate(120deg);
+}
+.trace:nth-child(2) {
+    transform: rotate(-120deg);
+}
+
+.met-types {
+    width: 322px;
+    height: 100px;
+    background-color:#9fd3ff;
+    display: none;
+    flex-direction: column;
+    font-size: 20px;
+    position: relative;
+       /*É necessário setar a posição do pai como relative, para os elementos filhos (p-style) ser alinha de acordo com ele e não com a viewport. Isso, por causa p-style possui position:absolute.*/
+
+    animation-duration: .35s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.p-style {
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    height: 0px;
+    border: 1px solid black;
+    color: #046074;
+    position: absolute;
+      /*Inicialmente, os parágrafos sobrepõe uma ao outro. */
+
+    animation: slide-downP;
+    animation-duration: 1s;
+      /*O tempo de animação dos parágrafos é adaptado, para que chegue 'ao mesmo tempo' que a div.*/
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+      /*É necessário adicionar animação aos parágrafos também, para ele ser animado conforme seu 'pai'.*/
+}
+
+.p-style:hover {
+    background-color: #0a818e;
+    color: #d9fcf5;
+}
+
+/*Animações de abertura e fechamento da div metTypes e seu filho: */
+@keyframes slide-downDiv {
+      /*animação de 'descida' da div.*/
+    0% {      
+        height: 0;
+    }
+    100% {
+        height: 110px;
+          /*Para fazer uma animação de slide-down, basta fazer a div 'crescer'. Inicialmente, seu height é 0. */
+    }
+}
+
+@keyframes slide-downP {
+      /*animação de 'descida' dos parágrafos.*/
+    0% {
+        opacity: 1;
+        height: 0;
+        position: absolute;
+    }
+    20% {
+        opacity: 1;
+        position: relative;
+        height: 20px;
+    }
+    40% {
+        opacity: 1;
+        position: relative;
+        height: 40px;
+    }
+    60% {
+        opacity: 1; 
+        height: 60px;
+        position: relative;
+    }
+    80% { 
+        opacity: 1;
+        height: 80px;
+        position: relative;
+    }
+    100% {
+        opacity: 1;
+        height: 100px;
+        position: relative;
+          /*Ao receber position: relative, os parágrafos deixam de seguir as regras de absolute (de sobrepor um ao outro), e passa a respeitar o espaçamento padrão dos elementos. */
+          /*A lógica da animação é a mesma que na animação da div, basta fazer os parágrafos 'crescer'. Porém, faz-se necessário especificar seu crescimento, para ter um maior controle da suavidade quando eles descerem.*/
+    }
+}
+
+
+@keyframes slide-upDiv {
+    /*animação de 'subida' da div.*/
+  0% {      
+      height: 100px;
+  }
+  100% {
+      height: 0;
+      display: none;
+  }
+}
+
+@keyframes slide-upP {
+    /*animação de 'subida' dos parágrafos.*/
+  0% {
+      height: 100px;
+      position: relative;
+  }
+  20% {
+      position: relative;
+      height: 80px;
+  }
+  40% {
+      position: relative;
+      height: 60px;
+  }
+  60% { 
+      height: 40px;
+      position: relative;
+  }
+  80% { 
+      height: 20px;
+      position: relative;
+  }
+  100% {
+      height: 0;
+      position: absolute;
+      display: none;
+      opacity: 0
+  }
+}
+
+.calc-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.calc-container1, .calc-container2, .calc-container3 {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    height: 300px;
+    background: #68c4cc;
+    position: absolute;
+    top: 20%;
+    box-shadow: -4px 4px 4px #00004969;
+}
+
+.div-calc {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid black;
+    font-size: 20px;
+    width: 80%;
+}
+
+.btn-calc {
+   font-size: 20px;
+   padding: 12px;
+   background: #114d4d;
+   color: white;
+   border: 2px solid #114d4d;
+   border-radius: 6px;
+}
+
+.btn-calc:hover {
+    border: 2px solid #66b6ab;
+}
+
+.btn-recalc {
+    display: none; /*inicialmente oculto*/
+}
+
+.btn-recalc img {
+    width: 32px;
+    height: 32px;
+    transition: all 1s;
+}
+
+.btn-recalc img:hover, .btn-recalc img:active {
+    transform: rotate(280deg);
+}
+
+.btn-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    width: 50px;
+    background-color: rgba(224, 224, 233, 0);
+}
+
+.close-trace {
+    width: 1px;
+    height: 30px;
+    background-color: black;
+    position: absolute;
+    transition: ease .3s;
+}
+
+.close-trace:nth-child(1) {
+   transform: rotate(-45deg); 
+}
+
+.close-trace:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.btn-close:hover {
+    background-color: red;
+}
+
+.resultado {
+   font-size: 20px;
+   margin-top: 30px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    background-color: #046074;
+    color: white;
+    position: absolute;
+    bottom: 0;
+}
+
+.nav-footer a {
+    text-decoration: none;
+    color: white;
+}
+
+/*-> efeito inválido: */
+.anima-invalid {
+   animation: shake 0.25s;
+   border-color: red;  
+}
+
+@keyframes shake {
+    25% {
+        transform: translateX(4px);
+    }
+    50% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
+}

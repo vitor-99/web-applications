@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href="style/header.css">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-navbar"> 
+            <ul> 
+                <li class="main-navbar__items">
+                    <a>Inicio</a>
+                </li>
+                <li class="main-navbar__items">
+                    <a>Contato</a>
+                </li>
+                <li class="main-navbar__items">
+                    <a>Saber mais</a>
+                </li>
+            </ul>   
+        </nav>
+    </header>
+
+  <main class="main">
+    <div class="container-media__opcoes">
+        <!--Nessa div, o usuário escolhe qual a forma que vai querer calcular. Os spans funcionaram como botões, que conterão funções conforme sua descrição.-->
+        <h1 class="titulo">Calculo de média</h1>
+        <p class="descricao">Esse é um programa para fazer médias aritméticas. Primeiramente, escolha o método que deseja para começar</p>
+        <div class="opcoes">
+            <span class="spn-opcao">média bimestral</span> 
+            <span class="spn-opcao">média trimestral</span> 
+            <span class="spn-opcao">outras formas de média</span>
+        </div>
+    </div>
+    <div class="div-calcMedia"><!--div bimestre-->
+         <!--'calc-media-bimestral' conterá os requisitos dos dados do usuário, os quais serão usados para o cálculo. Ela é oculta até o usuário escolher o método da média.-->
+        <div class="close" onclick="closeDiv('bimestre')"> 
+            <span class="trace"></span>
+            <span class="trace"></span>
+               <!--Esses traçados são para fechar a div.-->
+        </div>
+        <div class='form-wrapper'>
+            <!--Essa div contém os inputs para gerar o resultado da média-->
+            <form>
+                <div class='input-wrapper'>
+                   <label for="nota1">nota 1:</label>
+                       <!--label "legenda" o input-->
+                   <input type="text" class='input' id="nota2" placeholder="informe a nota aqui">
+                </div>
+                <div class='input-wrapper'>
+                   <label for="nota2">nota 2:</label>
+                   <input type='text' class='input' id="'nota2" placeholder="informe a nota aqui">
+                </div>
+                <div class='input-wrapper'>
+                    <label for="nota3">nota 3:</label>
+                    <input type='text' class='input' id="'nota3" placeholder="informe a nota aqui">
+                 </div>
+                 <div class='input-wrapper'>
+                    <label for="nota4">nota 4:</label>
+                    <input type='text' class='input' id="nota4" placeholder="informe a nota aqui">
+                 </div>
+            </form> 
+            <button class="btn-calcMed">Calcular</button>
+            <div class="resultado"></div> 
+                <!--Esta div terá o resultado da média. Inicialmente, seu display é none--> 
+            <img src='img/recalcular.png' class="btn-recalc" onclick="recalc('bimestre')"> 
+                <!--botão de recalcular-->
+        </div>
+    </div>
+
+    <div class="div-calcMedia"><!--div trimestr-->
+            <div class="close" onclick="closeDiv('trimestre')"> 
+                <span class="trace"></span>
+                <span class="trace"></span>
+                   <!--Esses traçados são para fechar a div.-->
+            </div>
+            <div class='form-wrapper'>
+                <!--Essa div contém os inputs para gerar o resultado da média-->
+                <form>
+                    <div class='input-wrapper'>
+                       <label for="nota1">nota 1:</label>
+                           <!--label "legenda" o input-->
+                       <input type="text" class='input' id="nota2" placeholder="informe a nota aqui">
+                    </div>
+                    <div class='input-wrapper'>
+                       <label for="nota2">nota 2:</label>
+                       <input type='text' class='input' id="'nota2" placeholder="informe a nota aqui">
+                    </div>
+                    <div class='input-wrapper'>
+                        <label for="nota3">nota 3:</label>
+                        <input type='text' class='input' id="'nota3" placeholder="informe a nota aqui">
+                     </div>
+                </form> 
+                <button class="btn-calcMed">Calcular</button>
+                <div class="resultado"></div> 
+                    <!--Esta div terá o resultado da média. Inicialmente, seu display é none--> 
+                <img src='img/recalcular.png' class="btn-recalc" onclick="recalc('trimestre')"> 
+                   <!--botão de recalcular--> 
+            </div>
+        </div>
+
+    <div class="div-calcMedia div-calcMedia__specific"><!--div outrasFormas-->
+        <!--Essa div conterá os requisitos dos dados do usuário, os quais serão usados para o cálculo. Ela é oculta até o usuário escolher o método da média.-->
+        <div class="close" onclick="closeDiv('outrasFormas')">
+            <span class="trace"></span>
+            <span class="trace"></span>
+        </div>
+        <div class="wrapper-inputInfo">
+            <!--Essa div irá requirir do usuário quantos parâmetros a média que ele deseja deve ter.-->
+            <h2>Informe a quantidade de parâmetros que você deseja na média:</h2>
+            <div class='input-info'>
+                <input type="text" placeholder="Informe aqui" class="numOfInputs">
+                <button style="width: 50%; margin: .5rem auto" onclick="criaInput()">Enviar</button>
+            </div>
+            <p>A quantidade de parâmetro refere-se aos valores que você irá informa. Se precisar, por exemplo, uma média de 10 notas, basta informar 10. </p>
+        </div>
+
+        <div class="form-wrapperParticular form-wrapper">
+        
+        <div class="wrapper-btn">
+            <button class="btn-calcMed" style="display: none">Calcular</button>
+            <div class="resultado"></div> 
+            <img src='img/recalcular.png' class="btn-recalc" onclick="recalc('outrasFormas')">
+        </div>     
+        </div>
+          <!--As classes estão com 'Particular' no final, pois elas são particulares dessa div.-->
+    </div>
+  </main>
+
+  <script src='js/media.js'></script>
+</body>
+</html>

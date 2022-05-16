@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head class="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcentagem</title>
+    <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="src/style/responsive.css">
+    <link rel="stylesheet" href="src/style/alertf.css">
+</head>
+
+<body>
+    <img src="src/img/background.jpg" class="background"></img>
+    <div class="background-helper">
+       <!--background-helper será o background com uma cor definida, para coloca-lo acima do background image.-->
+    </div> 
+    <span class="turn-mode" onclick="turn_mode()">
+       <img src="src/img/light-lamp.png" class="turn-mode__img">
+    </span>
+
+    <div class="container-inicial">
+        <!--Aqui será a div onde o usuário escolhe o método de porcentagem-->
+        <h2 class="title">Bem vindo à calculadora de porcentagem!</h2>
+        <p class="descricao">Esse programa serve para facilitar o cálculo de porcentagem, proporcionando formas de aumentar e diminuir x% de um valor; ou apenas saber o x% de um valor.</p>
+        <div class="div-escolheMet">
+          <!--Essa div é um botão, onde o usário escolhe o método de calculo.-->    
+            <p class="div-escolheMet__text">Escolher método do cálculo</p>
+            <div class="div-trace" onclick="openClose_Div()"> 
+                <span class="trace"></span>
+                <span class="trace"></span>
+                  <!--Trace funcionará como botão para abrir e fechar a div.-->
+            </div>
+        </div>
+        <div class="met-types">
+        <!--Essa div será onde o usuário escolherá o método-->
+            <p class='p-style' onclick="openCloseMet('div1')">Saber x% de um valor</p>
+            <p class='p-style' onclick="openCloseMet('div2')">Aumentar o valor X em %</p>
+            <p class='p-style' onclick="openCloseMet('div3')">Diminuir o valor de X em %</p>
+        </div>
+    </div>
+
+    <div class="calc-wrapper">
+        <div class='calc-container1'>
+          <!--Essa é a div do cáculo 1. Todas são semelhantes, adaptando se ao tipo de conta.-->
+          <div class="div-calc">
+            <input type="number" placeholder="valor" class='valor'>
+
+            <input type="number" placeholder="porcentagem" class="porcentagem">
+          </div>
+          <button class='btn-calc'>Calcular</button>
+          <p class="resultado"></p>
+          <span class='btn-recalc'>
+              <img src="src/img/recalc.png">
+          </span>
+
+          <span class="btn-close" onclick='openCloseMet("div1")'>
+            <span class="close-trace"></span>
+            <span class="close-trace"></span>
+          </span>
+        </div>
+        <div class='calc-container2'>
+            <div class="div-calc">
+                <input type="number" placeholder="valor" class="valor">
+                <p style="text-align: center;font-size: 25px">+</p>
+                <input type="number" placeholder="porcentagem"class="porcentagem">
+            </div>
+            <button class='btn-calc'>Calcular</button>
+            <p class="resultado"></p>
+            <span class='btn-recalc'>
+              <img src="src/img/recalc.png">
+            </span>
+
+            <span class="btn-close" onclick='openCloseMet("div2")'>
+                <span class="close-trace"></span>
+                <span class="close-trace"></span>
+            </span>
+        </div>
+
+        <div class='calc-container3'>
+            <div class="div-calc">
+              <input type="number" placeholder="valor" class="valor">
+              <p style="text-align: center;font-size: 30px">-</p>
+              <input type="number" placeholder="porcentagem" class="porcentagem">
+            </div>
+            <button class='btn-calc'>Calcular</button>
+            <p class="resultado"></p>
+            <span class='btn-recalc'>
+              <img src="src/img/recalc.png">
+            </span>
+
+            <span class="btn-close" onclick='openCloseMet("div3")'>
+                <span class="close-trace"></span>
+                <span class="close-trace"></span>
+            </span>
+        </div>
+     </div>
+
+     <footer class="footer">
+       <nav class="nav-footer">
+         <span>Desenvolvido por <a href="#">vitxr</a></span>
+       </nav>
+     </footer> 
+
+    <script src="src/script/buttons&efects.js"></script> 
+    <script defer type='module' src="src/script/main.js"></script>
+      <!--Para a função funcionar com módulos, precisa-se setar-se o type como module.-->
+</body>
+</html>

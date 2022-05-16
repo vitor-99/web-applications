@@ -1,0 +1,55 @@
+/*Esse css é para estilizar uma div criada por meio de um construtor*/
+
+.alert-div {
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   padding: 2rem;
+   font-size: 1.1rem
+}
+
+.btn-confirm {
+    padding: 0.5rem 2.5rem;
+    border-radius: 2px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 1rem;
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+.btn-confirm::before {
+    content: '';
+    top: 0;
+    left: 0;
+    background-color: #9bde99;
+    width: 100%;
+    height: 0;
+    position: absolute;
+    transition: all .5s ease-in;
+    z-index: -1
+}
+
+.btn-confirm:hover::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 700px) {
+   .alert-div {
+       font-size: 1rem;
+       width: 400px !important;
+   }
+
+   .btn-confirm {
+      padding: 0.25rem 2rem;
+   }
+}
+
+@media (max-height: 600px) {
+    .alert-div {
+        height: 120px !important;
+    }
+}

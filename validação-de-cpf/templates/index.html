@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/index.css">
+</head>
+<body>
+    <div class="container">
+        <form action="{{ url_for ('cpf_data')}}" method="post" id="form">
+            <!--o action envia o dado inputado pelo usuário a url especificada, onde será a informação será processada. Nesse caso, o valor inputado é enviado a função cpf_data no arquivo flask(app.py) (Url = uniform resource locator; localizador de recurso universal)-->
+            <input type='text' id="cpf" name="cpf" class="cpf-number" pattern="[0-9]{11}" maxlength="11" minlength="11" autocomplete="off">
+            <button type="submit" class="btn btn-verificar">verificar</button>
+        </form>
+    </div>
+
+<script defer>
+    if("{{ res }}" != '') {
+        //Quando a página for carregada, res é um valor vazio. Por isso faço uma condição, para que não seja feito o alert quando a página for carregada ou ter valor vazio.
+        var cpf = "{{ res }}";
+        var cpfN = "{{ cpf }}"
+        console.log(cpf, cpfN);
+        if(cpf == 'True') {
+            alert("O cpf informado (" + cpfN + ") é válido");
+        } else {
+            alert("O cpf informado (" + cpfN + ") é inválido");
+        }
+    }
+
+    /* $(document).on('submit', '#form', function(e){
+       e.preventDefault();
+       $.ajax({
+           type:"POST",
+           url:"/",
+           data: {
+               cpf:$("#cpf").val()
+           },
+           sucess: function(){
+               alert('saved')
+           }
+             
+       })
+    }) */
+</script>
+</body>
+</html>
