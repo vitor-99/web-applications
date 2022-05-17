@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculadora</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="src/style.css">
+  </head>
+
+  <body>
+    <div class="wrapper-calc">
+			<div class='leitor'></div>
+			<input id="resultado" type="text" placeholder="0" disabled="disabled">
+               <!--Disable desabilita o clique no input.-->
+		<section>
+			<div class="estilo-1">
+				<button onclick="calcular('acao','c')">C</button>
+				<button onclick="calcular('acao','/')">/</button>
+				<button onclick="calcular('acao','*')">X</button>
+				<button onclick="calcular('acao','-')">-</button>
+			</div>
+			
+			<div class="estilo-2">
+				<button onclick="calcular('valor','7')"> 7 </button>
+				<button  onclick="calcular('valor','8')">8</button>
+				<button  onclick="calcular('valor','9')">9</button>
+				<button  onclick="calcular('acao','+')">+</button>
+			</div>
+
+			<div class="estilo-3">
+				<button  onclick="calcular('valor','4')">4</button>
+				<button  onclick="calcular('valor','5')">5</button>
+				<button  onclick="calcular('valor','6')">6</button>
+				<button  onclick="calcular('acao','.')">.</button>
+			</div>
+
+			<div class="estilo-4">
+				<button  onclick="calcular('valor','1')">1</button>
+				<button  onclick="calcular('valor','2')">2</button>
+				<button  onclick="calcular('valor','3')">3</button>
+				<button  onclick="calcular('acao','=')">=</button>
+			</div>
+
+			<div class="estilo-5">	
+				<button  onclick="calcular('valor','0')">0</button>			
+			</div>
+            <!--Pode-se trabalhar com dois parâmetros no onclick, o que ajuda para algumas funções (como essa de cálculos.)-->
+		</section>
+    </div>  
+    <script src="src/index.js"></script>
+  </body>
+</html>

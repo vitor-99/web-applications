@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #8ebdb6;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+.wrapper-calc {
+    background-color: #ced1da;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 1;
+     /*z-index adiciona-se perspectiva ao elemento. O menor valor é último elemento; o maior, o primeiro. Isso em relação a tela (o que o usuário está vendo)*/
+}
+
+#resultado {
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 30px;
+}
+
+button {
+    background-color: #dae2cb;
+    display: inline-block;
+    width: 50px;
+    height: 30px; 
+    margin: 1px;
+    border: none;
+    margin: 2px;
+    border-radius: 5px;
+    position: relative;
+    z-index: auto;
+}
+
+button::before {
+      /*Esse pseudoelemento é apenas um plano de fundo do elemento pai. Serve apenas para dar dimensão 3d ao botão.*/
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: black;
+    bottom: -4px;
+    left: -1px;
+    content: "";
+    border-radius: 5px;
+    z-index: -1;
+}
+
+button:hover {
+    border: 1px solid black;
+}
+
+button:active {
+    top: 3px; 
+      /*O top dá um efeito de 'abaixar' o botão.*/
+    background-color: #9da58f;
+}
