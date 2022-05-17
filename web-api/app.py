@@ -1,13 +1,5 @@
 #Tarefas: 
-   #Fragmentar o código (feito)
    #renomear as variáveis  
-   #Quando o usuário é deletado, a atualização so acontece quando a página é recarregada. (meio arrumado - tentar arrumar o ajax)
-   #Os nomes não estão sendo exibidos. (arrumado)
-   #Quando se 'minimiza' o form, o post é feito e a página é recarregada (arrumado)
-   #fazer a função de alterar usuário (feito)
-   #tentar implementar, quando alterar o usuário, mostrar os dados atuais do usuário...
-   #refatorar o código do html e js, se possível
-
 
 import json
 from flask import Flask, redirect, url_for, render_template, request
@@ -41,11 +33,6 @@ def add_newUser():
         newUser = post_newUser(name, email, avatar)
         post_userdata(newUser)
 
-        """ with open("static/data/dados.csv", "a") as file:
-         for user in newUser: 
-            linha=f"{user['first_name']};{user['email']};{user['avatar']};{user['id']}\n"
-            file.write(linha)
-            #Cria o usário com as informações inputadas.  """
         
    return redirect(url_for('index'))
 
@@ -77,6 +64,7 @@ def change():
    #embora eu quero deletar os dados, primeiro preciso envia-los a função abaixo... O delete é feito apenas na API, com o dado postado nessa rota. (>> não sei se essa ideia é a correta << )
 def delete():
    output = request.get_json()
+   print(output)
    result = json.loads(output)
 
    res = delete_user(result)
