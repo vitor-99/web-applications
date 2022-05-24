@@ -53,7 +53,6 @@ user.forEach((e, index) => {
         const option = new OptionUser(index);
            //precisa-se do index do elemento, para saber em qual div o elemento criado por OptionUser será inserido.
         console.log(option);
-        console.log('aaaaaaa')
         e.preventDefault();
     }, false)
 })

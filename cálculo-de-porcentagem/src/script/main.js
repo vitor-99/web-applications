@@ -46,7 +46,7 @@ function calcAumentar() {
     let porc2=porc[1].value;
 
     if(valor2==0 || porc2==0) {
-      const alertF = new Alert('500px', '150px', 'Ambos campos precisam ser preenchidos!', 'white', 'black');
+      const alertF = new Alert('500px', '150px', 'Ambos campos precisam ser preenchidos!', 'white', 'black'); 
       alertF.appendTo(document.querySelector('body'));
 
       //Animação (efeito de inválido) do input:

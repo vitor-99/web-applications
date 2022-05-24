@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index():
    users = get_users()
-     #get_users na api
+     #get_users na api 
    usuarios = get_userdata(users)
      #get_users no arquivo
 
