@@ -1,0 +1,25 @@
+.main-container {
+    text-align: center;
+}
+
+.cities-section {
+    margin: 2rem auto 5rem auto;
+}
+
+.city-container {
+    width: 500px;
+    padding: 2rem 2rem;
+    margin: 0.5rem auto;
+    background-color: #42858C;
+    color: white;
+    text-align: center;
+    box-shadow: 2px 2px 2px 2px #427379;
+}
+
+.city-name {
+    font-size: 2rem;
+}
+/* 
+.owl-carousel .owl-nav.disabled{
+    display: block !important;
+} */

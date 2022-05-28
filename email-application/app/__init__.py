@@ -9,7 +9,6 @@ global mail
 mail = Mail()
 
 def create_app(config_name):
-    print(config_name)
     #essa função é uma fábrica de app. 
     app = Flask(__name__)
     app.config.from_object(config[config_name])
@@ -17,11 +16,7 @@ def create_app(config_name):
     mail.init_app(app)
       #init_app é o método que inicializa o Mail().
 
-    
-    app.config.from_object(config['test'])
       #o problema é que eu não estou conseguindo obter o valor das variáveis de ambiente no arquivo config.
-
-    print (f'MAIL_SERVER => {app.config["MAIL_SERVER"]}')
 
     from app.main import main as main_bp
       #é uma boa prática importar como main_bp, pois main é algo bem abstrato...

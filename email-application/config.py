@@ -3,15 +3,14 @@ import os
    #com a lib os, podemos ter acesso ao sistema operacional
 
 class Config:
-    MAIL_SERVER = os.environ.get("MAIL_SERVER") or 'alguma coisa'
-    MAIL_PORT = os.environ.get("MAIL_PORT") or 'alguma coisa'
-    MAIL_USE_TLS = os.environ.get("MAIL_USE_TLS") or 'alguma coisa'
-    MAIL_USE_SSL = os.environ.get("MAIL_USE_SSL") or 'alguma coisa'
-    MAIL_USERNAME = os.environ.get("MAIL_USERNAME") or 'alguma coisa'
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD") or 'alguma coisa'
+   MAIL_SERVER=os.getenv("MAIL_SERVER") or 'alguma coisa'
+   MAIL_PORT=os.getenv("MAIL_PORT") or 'alguma coisa'
+   MAIL_USE_TLS=os.getenv("MAIL_USE_TLS") or 'alguma coisa'
+   MAIL_USE_SSL=False#os.getenv("MAIL_USE_SSL") or 'alguma coisa'
+   MAIL_USERNAME=os.getenv("MAIL_USERNAME") or 'alguma coisa'
+   MAIL_PASSWORD=os.getenv("MAIL_PASSWORD") or 'alguma coisa'
        #Dessa forma, estamos pegando as variáveis de ambientes setadas em vars.ps1.
        #obs: o valor das variáveis é sempre 'alguma' coisa, pois não se está pegando as vars de ambiente.
-      
 
 class Desenvolvimento(Config):
    DEBUG = True

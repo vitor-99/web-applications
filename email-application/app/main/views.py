@@ -16,15 +16,9 @@ def sendEmail():
         email = request.form.get('email')
         message = request.form.get('message')
 
-        print(f"mail => {mail}")
-
         msg = Message("Email system - vitor", sender="vitxr3022@outlook.com", recipients=[email])
         msg.body = f"nome: {nome};\n email: {email};\n message: {message};\n"
     
-        """with main.open_resource("static/img/Screenshot_1.png") as print:
-           msg.attach('static/img/Screenshot_1.png', 'application/jpeg', print.read())
-              #é assim que se envia imagem na mensagem."""
-        #mail.connect()
         mail.send(msg)
 
-    return render_template('mail.html')
+    return render_template('index.html', emailEnviado=True)
