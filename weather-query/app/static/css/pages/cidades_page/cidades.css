@@ -7,19 +7,15 @@
 }
 
 .city-container {
-    width: 500px;
+    width: 70%;
     padding: 2rem 2rem;
     margin: 0.5rem auto;
-    background-color: #42858C;
+    background-color: #3E49B0;
     color: white;
     text-align: center;
-    box-shadow: 2px 2px 2px 2px #427379;
+    box-shadow: 2px 2px 2px 2px #3E49B0;
 }
 
 .city-name {
     font-size: 2rem;
 }
-/* 
-.owl-carousel .owl-nav.disabled{
-    display: block !important;
-} */

@@ -1,17 +1,17 @@
 import os
+from os.path import exists
 
-from traitlets import default  
 from app.main import main  
-from flask import make_response, redirect, render_template, request, current_app, request, url_for, flash
+from flask import render_template, request
 from app.static.py.getWeatherData import getWeather
 
 @main.route("/")
 def index(citySearched = None):
     global citySearchedData
-    citySearchedData = getWeather('Campinas') #cidade padrão
+    citySearchedData = getWeather('Campinas', os.getenv("WEATHER_API")) #cidade padrão
     if citySearched != None: 
         print(citySearched)
-        citySearchedData = getWeather(str(citySearched))
+        citySearchedData = getWeather(citySearched, os.getenv("WEATHER_API"))
 
     if citySearchedData == 404:
         #se citySearched retorna um erro de requisição, aqui se trata o erro. 
@@ -29,18 +29,18 @@ def cidades_info():
     if cidades == '':
         #para evitar várias requisições na api, declara-se cidades como uma variável global. A condição só será executada quando a variável for vazia, ou seja, na primeira execução do código.
         cidades = {
-            'curitiba': getWeather('curitiba'), 
-            'paranagua': getWeather('paranagua'),
-            'londrina': getWeather('londrina'),
-            'maringa': getWeather('maringa'),
-            'cascavel': getWeather('cascavel'),
-            'apucarana': getWeather('apucarana'),
-            'sao paulo': getWeather('sao paulo'),
-            'campinas': getWeather('campinas'),
-            'guarulhos': getWeather('guarulhos'),
-            'santos': getWeather('santos'),
+            'curitiba': getWeather('curitiba', os.getenv("WEATHER_API")), 
+            'paranagua': getWeather('paranagua', os.getenv("WEATHER_API")),
+            'londrina': getWeather('londrina', os.getenv("WEATHER_API")),
+            'maringa': getWeather('maringa', os.getenv("WEATHER_API")),
+            'cascavel': getWeather('cascavel', os.getenv("WEATHER_API")),
+            'apucarana': getWeather('apucarana', os.getenv("WEATHER_API")),
+            'sao paulo': getWeather('sao paulo', os.getenv("WEATHER_API")),
+            'campinas': getWeather('campinas', os.getenv("WEATHER_API")),
+            'guarulhos': getWeather('guarulhos', os.getenv("WEATHER_API")),
+            'santos': getWeather('santos', os.getenv("WEATHER_API")),
         }
-    print(cidades)
+
     return render_template("pages/cidades.html", cidades=cidades)
 
 @main.route('/search', methods=['GET', 'POST'])

@@ -3,20 +3,16 @@
 {% extends 'pages/base.html' %}  
   
 {% block content %}
-<!--Tratamento de erro: -->
-{% if error == 'cidade inválida!'%}
-    <script>
-        alert('cidade inválida')
-    </script>
-{% endif %}
-
 <main>
+    <h1>Monitoramento Climático</h1>
     <div class="container-weatherCity">
         <div class="search-box">
            <form class="search-box__form" action="{{url_for('main.searchCity')}}" method="post">
                 <input class='search-input' type="text" name="search-input" placeholder="pesquisar cidade">
-                <img class="search-icon" src="{{url_for('static', filename='img/search.png')}}">
-                <input class="search-input__submit" type="submit" value="pesquisar"> 
+                <div class="search-icon__box">
+                    <img class="search-icon" src="{{url_for('static', filename='img/search.png')}}">
+                    <input class="search-input__submit" type="submit" value="pesquisar"> 
+                </div>
                    <!--Para ter o input submit, mas deixar apenas a imagem aparencendo, fiz com que os dois elementos tenham o mesmo tamanho e mesma posição. Assim, deixa o input com opacity: 0. Ou seja, o input está acima do ícone, mas não aparece.-->
                    <!--O ícone de pesquisar só é usado em telas grandes (computador), nas pequenas (celulares) se usa o input de submit mesmo. -->
            </form>
@@ -45,5 +41,13 @@
     </div>
 
 </main>
+
+<!--Tratamento de erro: -->
+{% if error == 'cidade inválida!'%}
+<script>
+    alert('cidade inválida')
+</script>
+{% endif %}
+<script src="{{ url_for('static', filename='js/pages/wheater_page.js') }}"></script>
 
 {% endblock %}

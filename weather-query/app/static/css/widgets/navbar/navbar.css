@@ -18,7 +18,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #0F3759;
+    background: #232963;
     color: white;
 
     position: fixed;
@@ -27,7 +27,7 @@ a {
     z-index: 10; 
 }
 
-.toggle {
+.toogle {
     display: flex;
     flex-direction: column;
 }
@@ -37,6 +37,7 @@ a {
     height: 2px;
     background: white;
     margin: 0.2rem 1rem;
+    transition: .5s ease;
 }
 
 /*sideview navbar:*/
@@ -69,7 +70,7 @@ a {
 
 .nav-link {
     width: 100%;
-    margin: 1rem auto;
+    margin: 1rem 1.2rem;
       /*position relative, para que o ícone seja alinha a esse elemento*/
 }
 
@@ -92,6 +93,5 @@ a {
    border-bottom: 0.5px solid white;
    cursor: pointer;
 }
-
 
 
