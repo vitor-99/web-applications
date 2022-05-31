@@ -62,3 +62,9 @@
   <img width="800" src="_assets/email-application.gif">
 </p>
 
+<h3>9 - Sistema climático </h3>
+<p align="center">weather-query é um website para monitorar o clima em tempo real. Os dados climáticos foram obtidos através da API <a href="https://openweathermap.org">Open Weather</a>. O backend do site foi feito com o framework flask, enquanto o front-end com html, css e js.</p> 
+<p align="center">
+  <img width="800" src="_assets/weatherQuery.gif">
+</p>
+
